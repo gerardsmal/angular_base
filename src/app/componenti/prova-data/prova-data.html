@@ -1,0 +1,24 @@
+<div>
+    <div>
+        <input type="radio" name="colorEvid" (click)="cambioVoloreEvid('red')">Rosso
+        <input type="radio" name="colorEvid" (click)="cambioVoloreEvid('yellow')">Giallo
+        <input type="radio" name="colorEvid" (click)="cambioVoloreEvid('green')">Verde
+    </div>
+
+
+    <p [appHighLight]="colore">Ciao Benvenuti al {{title | uppercase}} oggi siamo il {{oggi | date:'dd/MM/yyyy - h:mm'}} num: {{numero | number: '3.2-4'}} prezzo: {{numero | currency:'EUR'}}</p>
+
+    @for (persona of data; track $index; let i = $index; ) {
+    <div class="cerchio" [ngClass]="{'cerchioOnline' : persona.isOnline, 'cerchioffline' : !persona.isOnline}">{{i}}
+    </div>
+    <p>{{persona.nome}} {{persona.cognome}}</p>
+    }
+
+    <input #variabileTemplate value="variabile template">
+
+    <button (click)="mandaDati()">Invia</button>
+    <button (click)="onClick()">Click me</button>
+
+
+
+</div>

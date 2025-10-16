@@ -1,0 +1,65 @@
+<p>versione angular 20</p>
+<div>
+    @for (persona of persone; track $index; let i = $index; let isFirst= $first; let isLast = $last) {
+    <div>
+        <li>
+            {{i}} {{isFirst}}/{{isLast}}   {{persona.nome}}. <strong>{{persona.cognome}}</strong>
+        @if (persona.isOnline){
+            <span> On Line</span>
+        } @else{
+            <span> Off line</span>
+        }
+     </li>
+    </div>
+  }
+</div>
+<!--
+<p>Esempio con switch con numero</p>
+<div>
+    @switch (numero) {
+        @case(1){
+            <span>hai scelto il numero<strong>UNO</strong></span>
+        }
+        @case(2){
+            <span>hai scelto il numero<strong>DUE</strong></span>
+        }
+        @case(3){
+            <span>hai scelto il numero<strong>TRE</strong></span>
+        }
+        @case(4){
+            <span>hai scelto il numero<strong>QUATRE</strong></span>
+        }
+        @default {
+            <span>Hai scelto un altro numero</span>
+        }
+
+    }
+<p>Esempio con switch con string</p>
+<div>
+    @switch (stringa) {
+        @case('pluto'){
+            <span>hai scelto il numero<strong>pluto</strong></span>
+        }
+        @case('paperino'){
+            <span>hai scelto il numero<strong>paperino</strong></span>
+        }
+        @case("Donald"){
+            <span>Response:</span>
+            <span>hai scelto il numero<strong>Donald</strong></span>
+        }
+        @case('daisy'){
+            <span>hai scelto il numero<strong>daisy</strong></span>
+        }
+        @default {
+            <span>Hai scelto un altra string</span>
+        }
+
+    }
+</div>
+-->
+<div>
+    @for (persona of persone; track $index; let i = $index; ) {  
+        <div class="cerchio" [ngClass]="{'cerchioOnline' : persona.isOnline, 'cerchioffline' : !persona.isOnline}">{{i}}</div>
+        <p>{{persona.nome}}  {{persona.cognome}}</p>  
+    }
+</div>

@@ -1,16 +1,33 @@
 import { NgModule, provideBrowserGlobalErrorListeners, provideZonelessChangeDetection } from '@angular/core';
 import { BrowserModule, provideClientHydration, withEventReplay } from '@angular/platform-browser';
+import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
+
 
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
+import { Prova } from './componenti/prova/prova';
+import { ProvaPersone } from './componenti/prova-persone/prova-persone';
+import { ProvaData } from './componenti/prova-data/prova-data';
+import { HighLight } from './direttiva/high-light';
 
 @NgModule({
   declarations: [
-    App
+    App,
+    Prova,
+    ProvaPersone,
+    ProvaData,
+    HighLight
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatCardModule,
+    MatButtonModule,
+    MatInputModule,
+    FormsModule
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
