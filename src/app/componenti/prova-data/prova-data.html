@@ -6,7 +6,7 @@
     </div>
 
 
-    <p [appHighLight]="colore">Ciao Benvenuti al {{title | uppercase}} oggi siamo il {{oggi | date:'dd/MM/yyyy - h:mm'}} num: {{numero | number: '3.2-4'}} prezzo: {{numero | currency:'EUR'}}</p>
+    <p [appHighLight]='colore' defaultColor='blue'>Ciao Benvenuti al {{title | uppercase}} oggi siamo il {{oggi | date:'dd/MM/yyyy - hh:mm'}} num: {{numero | number: '3.2-4'}} prezzo: {{numero | currency:'EUR'}}</p>
 
     @for (persona of data; track $index; let i = $index; ) {
     <div class="cerchio" [ngClass]="{'cerchioOnline' : persona.isOnline, 'cerchioffline' : !persona.isOnline}">{{i}}

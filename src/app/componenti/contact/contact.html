@@ -1,0 +1,10 @@
+<div>
+    <h1>Liste persone</h1>
+    @if (!isDetaglio){
+        @for (persona of persone; track $index; let i = $index; ) {  
+            <a routerLink="/contact/{{i}}">  <p>{{persona.nome}}  {{persona.cognome}}</p></a>  
+        }
+    } @else {
+        <p>Profilo contatto di {{persona.nome}}. {{persona.cognome}} </p>
+    }
+</div>

@@ -7,43 +7,43 @@ import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnChanges, O
   templateUrl: './prova-data.html',
   styleUrl: './prova-data.css'
 })
-export class ProvaData  implements OnInit, OnChanges, AfterViewInit{
-  
-  
+export class ProvaData implements OnInit, OnChanges, AfterViewInit {
+
+
   @Input() data: any;
   @Output() mandaDatiEvent = new EventEmitter<string>();
 
-  @ViewChild('variabileTemplate') valoreInput! : ElementRef<HTMLInputElement>; 
-  
+  @ViewChild('variabileTemplate') valoreInput!: ElementRef<HTMLInputElement>;
+
   ngOnInit(): void {
-   console.log("onInit");
+    console.log("onInit");
   }
-ngAfterViewInit(): void {
+  ngAfterViewInit(): void {
     console.log(this.valoreInput);
   }
-  
+
   ngOnChanges(changes: SimpleChanges): void {
-   console.log(changes['data'].currentValue);
-   console.log("first change:" + changes['data'].isFirstChange());
+    console.log(changes['data'].currentValue);
+    console.log("first change:" + changes['data'].isFirstChange());
   }
 
-  msgDaInivare=">>>>>> messaggio inivato da figlio <<<<<<";
+  msgDaInivare = ">>>>>> messaggio inivato da figlio <<<<<<";
 
-  mandaDati(){
+  mandaDati() {
     this.mandaDatiEvent.emit(this.msgDaInivare);
   }
 
-  onClick(){
+  onClick() {
     console.log(this.valoreInput.nativeElement.value);
   }
 
   title = 'corso Angular'
   oggi = new Date();
-  numero=12.512345667
+  numero = 12.512345667
 
 
   colore = '';
-  cambioVoloreEvid(coloreEvid:string){
+  cambioVoloreEvid(coloreEvid: string) {
     this.colore = coloreEvid;
   }
 }

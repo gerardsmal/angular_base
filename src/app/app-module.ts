@@ -12,6 +12,11 @@ import { Prova } from './componenti/prova/prova';
 import { ProvaPersone } from './componenti/prova-persone/prova-persone';
 import { ProvaData } from './componenti/prova-data/prova-data';
 import { HighLight } from './direttiva/high-light';
+import { ProvaPersoneService } from './componenti/prova-persone-service/prova-persone-service';
+import { About } from './componenti/about/about';
+import { Contact } from './componenti/contact/contact';
+import { Home } from './componenti/home/home';
+import { ContactDetails } from './componenti/contact-details/contact-details';
 
 @NgModule({
   declarations: [
@@ -19,7 +24,12 @@ import { HighLight } from './direttiva/high-light';
     Prova,
     ProvaPersone,
     ProvaData,
-    HighLight
+    HighLight,
+    ProvaPersoneService,
+    About,
+    Contact,
+    Home,
+    ContactDetails
   ],
   imports: [
     BrowserModule,

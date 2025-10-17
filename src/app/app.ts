@@ -10,8 +10,9 @@ export class App implements OnInit{
   protected readonly title = signal('frontend');
 
    ngOnInit(): void {
-    this.persone = this.persone0;
+    //this.persone = this.persone0;
   }
+  /*
   persone = [{}];
  
   persone0 =[
@@ -38,4 +39,6 @@ export class App implements OnInit{
   leggoMessaggioRicevuto(value: string){
     console.log("padre msg ricevuto :" + value);
   }
+  */
+
 }

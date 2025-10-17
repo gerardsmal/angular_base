@@ -8,9 +8,10 @@ export class HighLight {
 
   constructor(private element : ElementRef) {}
     @Input() appHighLight = '';
+    @Input() defaultColor = "";
 
    @HostListener('mouseenter') onMouseEnter(){
-      this.cambioColore(this.appHighLight);
+      this.cambioColore(this.appHighLight || this.defaultColor || 'purple');
     }
     @HostListener('mouseleave') onMouseLeave(){
       this.cambioColore("transparent");

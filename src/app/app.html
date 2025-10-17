@@ -1,3 +1,11 @@
+<!--
 <app-prova-data [data]="persone" (mandaDatiEvent)="leggoMessaggioRicevuto($event)"></app-prova-data>
 <button matButton (click)="onClick()">Cambia</button>
 <button matButton (click)="onRestore()">Restore</button>
+
+<app-prova-persone-service></app-prova-persone-service>
+-->
+<a routerLink="/" style="margin-right: 10px;">Home</a>
+<a routerLink="/about" style="margin-right: 10px;">About</a>
+<a routerLink="/contact" style="margin-right: 10px;">Contact</a>
+<router-outlet></router-outlet>

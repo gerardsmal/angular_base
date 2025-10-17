@@ -1,0 +1,7 @@
+<div>
+    <p>Liste persone</p>
+    @for (persona of persone; track $index; let i = $index; ) {  
+        <div class="cerchio" [ngClass]="{'cerchioOnline' : persona.isOnline, 'cerchioffline' : !persona.isOnline}">{{i}}</div>
+        <p>{{persona.nome}}  {{persona.cognome}}</p>  
+    }
+</div>
