@@ -10,24 +10,12 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class Contact implements OnInit{
   persone:any;
-  persona:any;
-  isDetaglio:boolean=false;
-
-  constructor(private service:ServiceProva,
-              private route:ActivatedRoute
+ 
+  constructor(private service:ServiceProva             
   ){}
   
   ngOnInit(): void {
-    if (this.route.snapshot.paramMap.get('id')){
-      this.isDetaglio = true;
-      this.persona = this.service.getPersona(parseInt(this.route.snapshot.paramMap.get('id')));
-      console.log(this.persona);
-    } else {
-      this.isDetaglio = false;
       this.persone = this.service.getPersone();
     }
-
-
-   }
 
 }
