@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class AuthServices {
   private isLogged:boolean = true;
-  private isAdmin:boolean = false;
+  private isAdmin:boolean = true;
 
 
   isAutentificated(){

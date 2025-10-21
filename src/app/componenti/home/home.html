@@ -1,1 +1,29 @@
-<p>home works!</p>
+<form [formGroup]="homeform" (ngSubmit)="onSubmit()" class="form-col">
+    <mat-form-field appearance="fill">
+        <mat-label>Nome</mat-label>
+        <input matInput type="text" name="nome" placeholder="introdurre nome" formControlName="nome">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Cognome</mat-label>
+        <input matInput type="text" name="cognome" placeholder="introdurre cognome" formControlName="cognome">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" name="email" placeholder="introdurre email" formControlName="email">
+    </mat-form-field>
+    @if (!homeform.valid && homeform.get('email').touched){
+        <span>Inserice un email valido</span>
+    }
+    <mat-form-field appearance="fill">
+        <mat-label>Colore</mat-label>
+        <mat-select name="colore" formControlName="colore">
+            <mat-option value="red">Rosso</mat-option>
+            <mat-option value="blu">Blu</mat-option>
+            <mat-option value="green">Verde</mat-option>
+            <mat-option value="pink">Rosa</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="!homeform.valid">Invia</button>
+
+</form>

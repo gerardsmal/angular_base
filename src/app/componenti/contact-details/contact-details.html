@@ -1,13 +1,43 @@
-<mat-card>
-  <mat-card-header>
-    <mat-card-title>Detaglio contatto {{persona.nome}}. {{persona.cognome}}</mat-card-title>
+<mat-card class="example-card" appearance="outlined">
+  @if (isError){
+    <p style="color:red">{{msg}}</p>
+  } @else {
+     <mat-card-header>
+    <mat-card-title>Detaglio contatto {{persona?.nome}}. {{persona?.cognome}}</mat-card-title>
   </mat-card-header>
-  <div mat-card-image></div>
-  <mat-card-content>
-        <li>Colore preferito : {{persona.colore}}</li>
-        <li><label>Status <p class='cerchio' 
-            [ngClass]="{'cerchioOnline' : persona.isOnline , 'cerchioffline' : !persona.isOnline}"></p></label></li>
-  </mat-card-content>
-  <mat-card-actions>
-  </mat-card-actions>
+  <form [formGroup]="updateform" (ngSubmit)="onSubmit()">
+    <mat-card-content>
+      <div class="form-container">
+        <mat-form-field class="form-column">
+          <mat-label>Nome</mat-label>
+          <input matInput type="text" name="nome" formControlName="nome">
+        </mat-form-field>
+        <mat-form-field class="form-column">
+          <mat-label>Cognome</mat-label>
+          <input matInput type="text" name="cognome" formControlName="cognome">
+        </mat-form-field>
+        <mat-form-field class="form-column">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" name="email" formControlName="email">
+        </mat-form-field>
+  @if (!updateform.valid && updateform.get('email').touched){
+        <span style="color: red;">Inserice un email valido</span>
+    }
+        <mat-form-field class="form-column">
+          <mat-label>Colore</mat-label>
+          <mat-select name="colore" formControlName="colore" [ngStyle]="{color:persona.colore}">
+            <mat-option value="red">Rosso</mat-option>
+            <mat-option value="blu">Blu</mat-option>
+            <mat-option value="green">Verde</mat-option>
+            <mat-option value="pink">Rosa</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+    <mat-card-actions class="button-group">
+      <button mat-raised-button color="primary" [disabled]="!updateform.valid">Aggiornare</button>
+    </mat-card-actions>
+  </form>
+
+  }
 </mat-card>

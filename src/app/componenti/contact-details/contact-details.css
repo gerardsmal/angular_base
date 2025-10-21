@@ -1,30 +1,20 @@
-
-.cerchio{
-   width: 30px;
-   height: 30px;
-   border-radius: 50%;
-   margin-right: 10px;
-   background-color: blue;
-   text-align: center;
-   color: white; 
+.example-card{
+    max-width: 600px;
 }
-li{
-    margin-bottom: 10px;
+.form-container{
     display: flex;
-    align-items: center;
+    justify-content: space-between;
+    flex-direction: column; 
+    gap: 20px;
 }
-li>p{
-    margin-bottom: 0;
+.form-column{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap:10px;
 }
-.cerchioOnline{
-    background-color: green;
-    color: white;
+.button-group{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 }
-.cerchioffline{
-    background-color: red;
-    color: white;
-}
-
-
-
-
