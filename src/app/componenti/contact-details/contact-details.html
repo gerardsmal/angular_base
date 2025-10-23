@@ -1,8 +1,8 @@
 <mat-card class="example-card" appearance="outlined">
-  @if (isError){
-    <p style="color:red">{{msg}}</p>
-  } @else {
-     <mat-card-header>
+  @if (stato().isError > 0){
+  <span style="color:red">{{stato().msg}}</span>
+  }
+  <mat-card-header>
     <mat-card-title>Detaglio contatto {{persona?.nome}}. {{persona?.cognome}}</mat-card-title>
   </mat-card-header>
   <form [formGroup]="updateform" (ngSubmit)="onSubmit()">
@@ -20,24 +20,29 @@
           <mat-label>Email</mat-label>
           <input matInput type="email" name="email" formControlName="email">
         </mat-form-field>
-  @if (!updateform.valid && updateform.get('email').touched){
+        @if (!updateform.valid && updateform.get('email').touched){
         <span style="color: red;">Inserice un email valido</span>
-    }
+        }
         <mat-form-field class="form-column">
           <mat-label>Colore</mat-label>
-          <mat-select name="colore" formControlName="colore" [ngStyle]="{color:persona.colore}">
+          <mat-select name="colore" formControlName="colore" [ngStyle]="{color:persona?.colore}">
             <mat-option value="red">Rosso</mat-option>
             <mat-option value="blu">Blu</mat-option>
             <mat-option value="green">Verde</mat-option>
             <mat-option value="pink">Rosa</mat-option>
+            <mat-option value="yellow">Giallo</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
     </mat-card-content>
     <mat-card-actions class="button-group">
-      <button mat-raised-button color="primary" [disabled]="!updateform.valid">Aggiornare</button>
+      <button mat-raised-button color="primary" type="button" (click)="onAnnull()">Annull</button>
+      @if (stato().isError == 0 || stato().isError == 2){
+      <button mat-raised-button style="background-color: green; color:white" [disabled]="!updateform.valid" type="submit">Aggiornare</button>
+      <button mat-raised-button style="background-color: red;" type="button" (click)="onDelete()">Cancellare</button>
+      }
     </mat-card-actions>
   </form>
 
-  }
+
 </mat-card>

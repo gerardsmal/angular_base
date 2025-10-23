@@ -8,6 +8,7 @@ import {MatInputModule} from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 import { AppRoutingModule } from './app-routing-module';
@@ -22,6 +23,7 @@ import { Contact } from './componenti/contact/contact';
 import { Home } from './componenti/home/home';
 import { ContactDetails } from './componenti/contact-details/contact-details';
 import { Notfound } from './componenti/notfound/notfound';
+import { DeletePersona } from './dialogs/delete-persona/delete-persona';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { Notfound } from './componenti/notfound/notfound';
     Contact,
     Home,
     ContactDetails,
-    Notfound
+    Notfound,
+    DeletePersona
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,8 @@ import { Notfound } from './componenti/notfound/notfound';
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDialogModule
   ],
   providers: [
     provideHttpClient(withFetch()),

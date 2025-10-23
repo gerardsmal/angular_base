@@ -21,9 +21,13 @@
             <mat-option value="blu">Blu</mat-option>
             <mat-option value="green">Verde</mat-option>
             <mat-option value="pink">Rosa</mat-option>
+            <mat-option value="yellow">Giallo</mat-option>
         </mat-select>
     </mat-form-field>
 
+    <span [ngStyle]="{'color': stato().isError ? 'red' : 'black'}">{{ stato().msg }}</span>
+ 
     <button mat-raised-button color="primary" type="submit" [disabled]="!homeform.valid">Invia</button>
+ 
 
 </form>

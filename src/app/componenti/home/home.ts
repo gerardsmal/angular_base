@@ -1,5 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { Component, OnInit, signal } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { PersoneService } from '../../services/persone-service';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,17 @@ import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 })
 export class Home implements OnInit {
   homeform : FormGroup;
-  
+
+  stato = signal({
+     msg : null as string | null,
+     isError : false
+  })
+
+ 
+
+  constructor(private service:PersoneService
+  ){}
+
   ngOnInit(): void {
     this.homeform = new FormGroup({
       nome: new FormControl(null, Validators.required),
@@ -20,10 +31,33 @@ export class Home implements OnInit {
   }
 
   onSubmit(){
-    console.log("nome:" + this.homeform.value.nome);
-    console.log("cognome:" + this.homeform.value.cognome);
-    console.log("email:" + this.homeform.value.email);
-    console.log("colore: " + this.homeform.value.colore + " updated:" + this.homeform.get("colore").touched);
+   
+    this.service.insertPersona({
+      nome: this.homeform.value.nome,
+      cognome : this.homeform.value.cognome,
+      email : this.homeform.value.email,
+      colore: this.homeform.value.colore
+    }).subscribe({
+      next: ((resp:any) => {
+        this.homeform.reset();
+        this.stato.set({
+          msg: resp,
+          isError: false
+        })
+        console.log(this.stato().msg + " " + this.stato().isError);
+
+      }),
+      error: ((resp:any) => {
+        this.stato.set({
+          msg:resp.error,
+          isError : true
+        })
+        console.log(this.stato().msg + " " + this.stato().isError);
+      })
+    })
+
+
+
 
   }
 

@@ -16,4 +16,14 @@ export class PersoneService {
     let params = new HttpParams().set('id',id);
     return this.http.get(this.url + "getById", { params});
   }
+
+  updatePersona(body:{}){
+    return this.http.put(this.url + "update", body , { responseType: 'text'});
+  }
+  insertPersona(body:{}){
+    return this.http.post(this.url+ "create", body, { responseType: 'text'});
+  }
+  removePersona(id:number){
+    return this.http.delete(this.url + "delete/" + id , { responseType: 'text'}  );
+  }
 }
