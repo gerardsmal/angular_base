@@ -24,6 +24,8 @@ import { Home } from './componenti/home/home';
 import { ContactDetails } from './componenti/contact-details/contact-details';
 import { Notfound } from './componenti/notfound/notfound';
 import { DeletePersona } from './dialogs/delete-persona/delete-persona';
+import { Login } from './componenti/login/login';
+import { Registrazione } from './componenti/registrazione/registrazione';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { DeletePersona } from './dialogs/delete-persona/delete-persona';
     Home,
     ContactDetails,
     Notfound,
-    DeletePersona
+    DeletePersona,
+    Login,
+    Registrazione
   ],
   imports: [
     BrowserModule,

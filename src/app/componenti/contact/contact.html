@@ -2,7 +2,7 @@
     <div style="width: 30%;">
 
         <h1>Liste persone</h1>
-        @for (persona of persone; track persona.id ) {
+        @for (persona of persone(); track persona.id ) {
             <a routerLink="/contact/{{persona.id}}">
                 <p>{{persona.nome}} {{persona.cognome}}</p>
             </a>

@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PersoneService } from '../../services/persone-service';
@@ -40,7 +40,7 @@ export class ContactDetails implements OnInit {
       this.service.getPersona(this.id)
         .subscribe({
           next: ((resp: any) => {
-            console.log(resp);
+           // console.log(resp);
             this.persona = resp;
             this.updateform = new FormGroup({
               nome: new FormControl(resp.nome, Validators.required),
@@ -84,9 +84,6 @@ export class ContactDetails implements OnInit {
         next: ((resp: any) => {
           console.log(resp);
           this.routing.navigate(["/contact"])
-            .then(() => {
-              window.location.reload();
-            })
         }),
         error: ((resp: any) => {
             this.stato.set({
@@ -108,8 +105,8 @@ export class ContactDetails implements OnInit {
 
   onDelete(){
     console.log("onDelete :" + this.persona.nome + " " + this.persona.cognome);
-    const enterAnimationDuration:string = '1000ms';
-    const exitAnimationDuration:string  = '1000ms';
+    const enterAnimationDuration:string = '500ms';
+    const exitAnimationDuration:string  = '500ms';
     const dialodRef = this.dialog.open(DeletePersona , {
       width: '350px',
       enterAnimationDuration,
@@ -127,8 +124,13 @@ export class ContactDetails implements OnInit {
   deleteAction(){
     console.log("delete action")
     this.service.removePersona(this.persona.id)
-    .subscribe(resp => {
-      console.log(resp);
-    })
+    .subscribe({
+      next:(resp => {
+        this.routing.navigate(["/contact"])
+      }),
+      error:((resp:any) => {
+        console.log("errore nella cancelazione:" + resp.error);
+      })
+    });
   }
 }

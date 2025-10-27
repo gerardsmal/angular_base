@@ -8,30 +8,15 @@ import { PersoneService } from '../../services/persone-service';
   styleUrls: ['./contact.css']
 })
 export class Contact implements OnInit {
- persone: any; 
 
-  constructor(private service: PersoneService,
-              private cdRef:ChangeDetectorRef
-  ) { 
+persone:any;
+
+  constructor(private service: PersoneService) { 
   }
 
   ngOnInit(): void {
     console.log("onInit")
-    this.loadPersone();
-  }
-  
-  loadPersone(){
-       this.service.listPersone()
-      .subscribe({
-        next: ((resp: any) => {
-          this.persone = resp;
-        //  console.log(this.persone);
-          this.cdRef.detectChanges();  // per forzare il binding
-        }),
-        error: ((resp: any) => {
-          console.log(resp.error);
-        })
-      });
- 
+    this.persone = this.service.persone;  // init delle persone formato signal
+    this.service.caricaPersone();         // il subcribe non serve perché gestito dal servizio
   }
 }

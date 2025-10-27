@@ -1,4 +1,6 @@
 import { Component, OnInit, signal } from '@angular/core';
+import { AuthServices } from './auth/auth-services';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +10,12 @@ import { Component, OnInit, signal } from '@angular/core';
 })
 export class App implements OnInit{
   protected readonly title = signal('frontend');
+
+  constructor(private auth:AuthServices,
+              private routing:Router
+  ){
+
+  }
 
    ngOnInit(): void {
     //this.persone = this.persone0;
@@ -41,4 +49,8 @@ export class App implements OnInit{
   }
   */
 
+  logout(){
+    this.auth.resetAll();
+    this.routing.navigate(['login']);
+  }
 }

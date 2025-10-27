@@ -7,10 +7,14 @@ import { ContactDetails } from './componenti/contact-details/contact-details';
 import { Notfound } from './componenti/notfound/notfound';
 import { authGuard } from './auth/auth-guard';
 import { authAdminGuard } from './auth/auth-admin-guard';
+import { Login } from './componenti/login/login';
+import { Registrazione } from './componenti/registrazione/registrazione';
 
 const routes: Routes = [
-  { path: '', pathMatch:'full', redirectTo: '/home' },
-  { path: 'home', component: Home },
+  { path: '', pathMatch:'full', redirectTo: 'login' },
+  { path: 'login', component: Login },
+  { path: 'registr', component: Registrazione },
+  { path: 'home', component: Home , canActivate: [authGuard]} ,
   { path: 'about', component: About },
   { path: "contact", component: Contact, canActivate:[authGuard] , 
                   canActivateChild:[authAdminGuard] ,children: [
