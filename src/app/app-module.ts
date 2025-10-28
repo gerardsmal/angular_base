@@ -2,6 +2,8 @@ import { NgModule, provideBrowserGlobalErrorListeners, provideZonelessChangeDete
 import { BrowserModule, provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 
+import { ConfigService } from './services/config-service'; // 👈 importa il servizio
+
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
@@ -64,4 +66,11 @@ import { Registrazione } from './componenti/registrazione/registrazione';
   ],
   bootstrap: [App]
 })
-export class AppModule { }
+// appModule é stato modificato per permetter a angular d'eseguire il loadURL al startup
+export class AppModule {
+  constructor(private configService: ConfigService) {
+    // ✅ Eseguito automaticamente all’avvio dell’app
+    this.configService.loadURL();
+     
+  }
+}

@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { UtenteService } from '../../services/utente-service';
 import { AuthServices } from '../../auth/auth-services';
 import { Router } from '@angular/router';
+import { ConfigService } from '../../services/config-service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,8 @@ export class Login {
   constructor(private utente:UtenteService,
               private auth:AuthServices,
               private routing:Router
-  ){}
+  ){
+  }
 
   onSubmit(signin: NgForm){
     this.utente.signin({
