@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 export class App implements OnInit{
   protected readonly title = signal('frontend');
 
+  isAdmin = signal<boolean>(false);
+
   constructor(private auth:AuthServices,
               private routing:Router
   ){
@@ -18,6 +20,7 @@ export class App implements OnInit{
   }
 
    ngOnInit(): void {
+    this.isAdmin.set(this.auth.isRoleAdmin());
     //this.persone = this.persone0;
   }
   /*

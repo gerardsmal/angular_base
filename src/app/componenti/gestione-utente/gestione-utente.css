@@ -1,0 +1,41 @@
+.example-card {
+  flex: 0 0 50%;
+  max-width: 450px;
+  min-width: 300px;
+}
+.tabella.centrata {
+    width: 100%;
+    margin: 0 auto;
+}
+.riga {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+mat-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* spazio tra le due righe */
+}
+.mat-mdc-card-header {
+  margin-bottom: 16px;
+}
+.clickable-row{
+    cursor: pointer
+}
+.clickable-row:hover{
+    background-color:#b8daf4;
+}
+.selected {
+       background-color:#eccc9e;
+}
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap:20px;
+}
+.router-container {
+    flex: 1;
+    padding: 10px;
+}

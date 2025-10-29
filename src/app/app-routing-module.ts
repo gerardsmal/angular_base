@@ -9,6 +9,8 @@ import { authGuard } from './auth/auth-guard';
 import { authAdminGuard } from './auth/auth-admin-guard';
 import { Login } from './componenti/login/login';
 import { Registrazione } from './componenti/registrazione/registrazione';
+import { GestioneUtente } from './componenti/gestione-utente/gestione-utente';
+import { UpdateUtente } from './componenti/update-utente/update-utente';
 
 const routes: Routes = [
   { path: '', pathMatch:'full', redirectTo: 'login' },
@@ -20,6 +22,9 @@ const routes: Routes = [
                   canActivateChild:[authAdminGuard] ,children: [
       { path: ":id", component: ContactDetails }
     ]},
+  { path: 'utente', component: GestioneUtente, canActivate: [authGuard, authAdminGuard] , children: [
+      { path: ":id" , component: UpdateUtente}
+  ]},
   { path: '404', component: Notfound},
   { path: '**', redirectTo:'404'}  
 ];

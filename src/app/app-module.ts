@@ -11,7 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDialogModule} from '@angular/material/dialog';
-
+import {MatChipsModule} from '@angular/material/chips';
 
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
@@ -28,6 +28,8 @@ import { Notfound } from './componenti/notfound/notfound';
 import { DeletePersona } from './dialogs/delete-persona/delete-persona';
 import { Login } from './componenti/login/login';
 import { Registrazione } from './componenti/registrazione/registrazione';
+import { GestioneUtente } from './componenti/gestione-utente/gestione-utente';
+import { UpdateUtente } from './componenti/update-utente/update-utente';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import { Registrazione } from './componenti/registrazione/registrazione';
     Notfound,
     DeletePersona,
     Login,
-    Registrazione
+    Registrazione,
+    GestioneUtente,
+    UpdateUtente
   ],
   imports: [
     BrowserModule,
@@ -56,7 +60,8 @@ import { Registrazione } from './componenti/registrazione/registrazione';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatSelectModule,
-    MatDialogModule
+    MatDialogModule,
+    MatChipsModule
   ],
   providers: [
     provideHttpClient(withFetch()),
