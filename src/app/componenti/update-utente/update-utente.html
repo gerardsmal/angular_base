@@ -1,7 +1,10 @@
+
 <mat-card class="example-card" appearance="outlined">
+    <div class="container">
     <mat-card-header>
-        <mat-card-title>Update </mat-card-title>
+        <mat-card-title>{{stato().title}} </mat-card-title> 
     </mat-card-header>
+   
     <mat-card-content>
 
         <form [formGroup]="utenteForm" (ngSubmit)="onSubmit()">
@@ -9,12 +12,12 @@
                 <mat-label>User Name</mat-label>
                 <input matInput type="text" name="userName" placeholder="introdurre username" formControlName="userName">
             </mat-form-field>
- <!--         
+          
             <mat-form-field appearance="fill">
                 <mat-label>Password</mat-label>
-                <input matInput type="password" name="password" placeholder="introdurre username" formControlName="userName">
+                <input matInput type="text" name="password" placeholder="introdurre password" formControlName="pwd">
             </mat-form-field>
--->
+
             <mat-form-field appearance="fill">
                 <mat-label>Role</mat-label>
                 <mat-select name="role" formControlName="role">
@@ -23,17 +26,26 @@
                 </mat-select>
             </mat-form-field>
 
+            @if (stato().isError > 0){
+                <span [ngStyle]="{color:stato().colore}">{{stato().msg}}</span>
+            }
 
         </form>
 
     </mat-card-content>
     <mat-card-footer class="example-card-footer">
         <mat-chip-set>
+            <mat-chip (click)="onAnnull()" color="warn" class="chip-cancel">Return
+            </mat-chip>
             <mat-chip color="primary" [disabled]="!utenteForm.valid" (click)="utenteForm.valid && onSubmit()"
-                class="chip-submit">Aggiornare</mat-chip>
+                class="chip-submit">Salvare</mat-chip>
+            @if (stato().title != 'Creazione'){
             <mat-chip (click)="onDelete()" color="warn" class="chip-cancel">Cancellare
             </mat-chip>
+
+            }    
         </mat-chip-set>
 
     </mat-card-footer>
+    </div>
 </mat-card>

@@ -22,7 +22,8 @@ const routes: Routes = [
                   canActivateChild:[authAdminGuard] ,children: [
       { path: ":id", component: ContactDetails }
     ]},
-  { path: 'utente', component: GestioneUtente, canActivate: [authGuard, authAdminGuard] , children: [
+  { path: 'utente', component: GestioneUtente, 
+                  canActivate: [authGuard, authAdminGuard] , children: [
       { path: ":id" , component: UpdateUtente}
   ]},
   { path: '404', component: Notfound},

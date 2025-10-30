@@ -12,6 +12,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatDividerModule} from '@angular/material/divider';
 
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
@@ -61,7 +62,8 @@ import { UpdateUtente } from './componenti/update-utente/update-utente';
     MatFormFieldModule,
     MatSelectModule,
     MatDialogModule,
-    MatChipsModule
+    MatChipsModule,
+    MatDividerModule
   ],
   providers: [
     provideHttpClient(withFetch()),

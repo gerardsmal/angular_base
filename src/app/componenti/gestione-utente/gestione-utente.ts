@@ -13,19 +13,26 @@ export class GestioneUtente implements OnInit{
 
   utente:any;
   selectedUtente:any;
+  userName:string = null;
+  role:string = null;
   constructor(private service:UtenteService,
               private routing:Router
   ){}
 
   ngOnInit(): void {
-    console.log("ngOnInit")
     this.utente = this.service.utente;
     this.service.list(null, null);
-    console.log("after service")
-
+  
   }
   onSelectedUtente(utente:any){
     console.log(utente);
     this.routing.navigate(["utente/" , utente.id])
+  }
+  cerca(){ 
+    if (this.role == 'Role') this.role = null;
+    this.service.list(this.userName,this.role);
+  }
+  create(){
+    this.routing.navigate(["utente/0"])
   }
 }

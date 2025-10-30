@@ -24,9 +24,9 @@ export class ContactDetails implements OnInit {
   readonly dialog= inject(MatDialog);
 
   updateform: FormGroup = new FormGroup({
-    nome: new FormControl(null),
-    cognome: new FormControl(null),
-    email: new FormControl(null),
+    nome: new FormControl(null, Validators.required),
+    cognome: new FormControl(null,Validators.required),
+    email: new FormControl(null, [Validators.required, Validators.email]),
     colore: new FormControl(null)
   });
 
@@ -42,11 +42,11 @@ export class ContactDetails implements OnInit {
           next: ((resp: any) => {
            // console.log(resp);
             this.persona = resp;
-            this.updateform = new FormGroup({
-              nome: new FormControl(resp.nome, Validators.required),
-              cognome: new FormControl(resp.cognome, Validators.required),
-              email: new FormControl(resp.email, [Validators.required, Validators.email]),
-              colore: new FormControl(resp.colore)
+            this.updateform.patchValue({ // load value inside form
+              nome: resp.nome, 
+              cognome: resp.cognome,
+              email: resp.email,
+              colore: resp.colore
             })
             this.stato.set({
                 msg: null,
@@ -98,9 +98,6 @@ export class ContactDetails implements OnInit {
   }
   onAnnull() {
     this.routing.navigate(["/contact"])
-      .then(() => {
-        window.location.reload();
-      })
   }
 
   onDelete(){
@@ -112,7 +109,7 @@ export class ContactDetails implements OnInit {
       enterAnimationDuration,
       exitAnimationDuration,
       data:{
-        persona: this.persona
+        persona: this.persona.nome + " " + this.persona.cognome
       }
     })
     dialodRef.afterClosed()
